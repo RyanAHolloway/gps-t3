@@ -14,7 +14,7 @@ pipeline {
       stages {
            stage('Build') {
                 steps {
-                     sh 'make -f Makefile2 all'
+                     sh 'make -f Makefile2'
                 }
            } 
      }
