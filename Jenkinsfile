@@ -19,7 +19,7 @@ pipeline {
            }
            stage('Run') {
            		steps {
-           			sh 'bin/gpx-tests'
+           			sh 'cd bin && ./gpx-tests'
            		}
            } 
      }
