@@ -16,6 +16,11 @@ pipeline {
                 steps {
                      sh 'make -f Makefile2'
                 }
+           }
+           stage('Run') {
+           		steps {
+           			sh 'bin/gpx-tests'
+           		}
            } 
      }
 }
