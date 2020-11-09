@@ -4,6 +4,7 @@
 #include "types.h"
 #include "route.h"
 
+
 using namespace GPS;
 
 BOOST_AUTO_TEST_SUITE( maxLatitude )
@@ -26,14 +27,35 @@ BOOST_AUTO_TEST_SUITE( maxLatitude )
 
 const bool isFileName = true; // All GPX data in this suite is loaded from files.
 const metres horizontalGridUnit = 100000;
-
 const double percentageAccuracy = 0.0001;
 
-// Check the name of a GPX route containing a non-empty <rte pt> element within <rte>.
-BOOST_AUTO_TEST_CASE( position_location_present )
+// Check that a negative latitude value is accepted
+BOOST_AUTO_TEST_CASE( accept_negative_latitude_present )
 {
-	 Route route = Route(LogFiles::GPXRoutesDir + "Q.gpx", isFileName);
-	 BOOST_CHECK_EQUAL( route.maxLatitude(), -0.89982 );
+	//Arrange
+	const std::string gpxData = "<gpx><rte><name>MyRoute</name><rtept lat=\"-1.00000\" lon=\"0\"></rtept></rte></gpx>";
+
+	//Act
+	Route route = Route(gpxData, false);
+
+	//Assert
+	BOOST_CHECK_EQUAL( route.maxLatitude(), -1.00000);
+}
+
+// Check that a negative latitude value is accepted
+BOOST_AUTO_TEST_CASE( accept_positive_latitude_present )
+{
+	const std::string gpxData = "<gpx><rte><name>MyRoute</name><rtept lat=\"1\" lon=\"0\"></rtept></rte></gpx>";
+	 Route route = Route(gpxData, false);
+
+	 BOOST_CHECK_EQUAL( route.maxLatitude() , 1 );
+}
+
+//Check that a negative max latitude value is accepted in a route log
+BOOST_AUTO_TEST_CASE( check_negative_max_latitude_from_log )
+{
+	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTestLog1.gpx", isFileName);
+	 BOOST_CHECK_EQUAL( route.maxLatitude(), -52.91 );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
