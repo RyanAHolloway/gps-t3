@@ -76,7 +76,7 @@ degrees Route::minLatitude() const
 
 degrees Route::maxLatitude() const
 {
-    //assert(! positions.empty());
+    assert(! positions.empty());
 
     degrees maxLat = positions.front().latitude();
     for (const Position& pos : positions)

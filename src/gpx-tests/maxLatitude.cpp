@@ -1,5 +1,7 @@
 #include <boost/test/unit_test.hpp>
 
+#include "logs.h"
+#include "types.h"
 #include "route.h"
 
 using namespace GPS;
@@ -22,17 +24,16 @@ BOOST_AUTO_TEST_SUITE( maxLatitude )
  * same name.  We also test that blank space within the name is not dropped.
  */
 
-const std::string defaultName = "Unnamed Route";
-const bool isFileName = false; // All GPX data in this suite is provided as strings.
+const bool isFileName = true; // All GPX data in this suite is loaded from files.
+const metres horizontalGridUnit = 100000;
+
+const double percentageAccuracy = 0.0001;
 
 // Check the name of a GPX route containing a non-empty <rte pt> element within <rte>.
 BOOST_AUTO_TEST_CASE( position_location_present )
 {
-   const std::string gpxData =
-     "<gpx><rte><name>MyRoute</name><rtept lat=\"0\" lon=\"0\"></rtept></rte></gpx>";
-   Route route = Route(gpxData, isFileName);
-
-   BOOST_CHECK_EQUAL( route.maxLatitude(), "0" );
+	 Route route = Route(LogFiles::GPXRoutesDir + "Q.gpx", isFileName);
+	 BOOST_CHECK_EQUAL( route.maxLatitude(), -0.89982 );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
