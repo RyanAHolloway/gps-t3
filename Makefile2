@@ -45,7 +45,7 @@ SOURCES += \
     xml/parser.cpp \
     gpx-tests/name.cpp \
     gpx-tests/numpositions.cpp \
-    gps-tests/maxLatitude.cpp
+    gpx-tests/maxLatitude.cpp
 
 _OBJ = $(SOURCES:.cpp=.o)
 OBJ = $(patsubst %,$(OBJDIR)/%,$(_OBJ))
