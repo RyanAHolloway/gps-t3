@@ -4,6 +4,19 @@
 #include "types.h"
 #include "route.h"
 
+#include <sstream>
+#include <fstream>
+#include <iostream>
+#include <cassert>
+#include <cmath>
+#include <algorithm>
+#include <iterator>
+#include <stdexcept>
+
+#include "geometry.h"
+#include "xml/element.h"
+#include "xml/parser.h"
+#include "route.h"
 
 using namespace GPS;
 
@@ -28,6 +41,24 @@ BOOST_AUTO_TEST_SUITE( maxLatitude )
 const bool isFileName = true; // All GPX data in this suite is loaded from files.
 const metres horizontalGridUnit = 100000;
 const double percentageAccuracy = 0.0001;
+
+//Check lat value is not over 90
+BOOST_AUTO_TEST_CASE( test_injection_latitude_present )
+{
+	//Arrange
+	std::vector<Position> positions;
+	Position pos = Position("88","0","0");
+	positions.push_back(pos);
+	degrees maxLat = positions.front().latitude();
+
+	const std::string gpxData = "<gpx><rte><name>MyRoute</name><rtept lat=\"" + maxLat + "\" lon=\"0\"></rtept></rte></gpx>";
+
+	//Act
+	Route route = Route(gpxData, false);
+
+	//Assert
+	BOOST_CHECK_EQUAL( route.maxLatitude(), 88);
+}
 
 // Check that a negative latitude value is accepted
 BOOST_AUTO_TEST_CASE( accept_negative_latitude_present )
