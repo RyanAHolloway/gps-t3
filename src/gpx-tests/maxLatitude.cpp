@@ -51,7 +51,9 @@ BOOST_AUTO_TEST_CASE( test_injection_latitude_present )
 	positions.push_back(pos);
 	degrees maxLat = positions.front().latitude();
 
-	const std::string gpxData = "<gpx><rte><name>MyRoute</name><rtept lat=\"" + maxLat + "\" lon=\"0\"></rtept></rte></gpx>";
+	std::string lat = std::to_string(maxLat);
+
+	const std::string gpxData = "<gpx><rte><name>MyRoute</name><rtept lat=\"" + lat + "\" lon=\"0\"></rtept></rte></gpx>";
 
 	//Act
 	Route route = Route(gpxData, false);
