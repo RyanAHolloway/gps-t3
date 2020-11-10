@@ -54,7 +54,7 @@ BOOST_AUTO_TEST_CASE( accept_positive_latitude_present )
 //Check that a negative max latitude value is accepted in a route log
 BOOST_AUTO_TEST_CASE( check_negative_max_latitude_from_log )
 {
-	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTestLog1.gpx", isFileName);
+	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTTestLog1.gpx", isFileName);
 	 BOOST_CHECK_EQUAL( route.maxLatitude(), -52.91 );
 }
 
