@@ -42,7 +42,7 @@ BOOST_AUTO_TEST_CASE( accept_negative_latitude_present )
 	BOOST_CHECK_EQUAL( route.maxLatitude(), -1.00000);
 }
 
-// Check that a negative latitude value is accepted
+// Check that a positive latitude value is accepted
 BOOST_AUTO_TEST_CASE( accept_positive_latitude_present )
 {
 	const std::string gpxData = "<gpx><rte><name>MyRoute</name><rtept lat=\"1\" lon=\"0\"></rtept></rte></gpx>";
@@ -56,6 +56,13 @@ BOOST_AUTO_TEST_CASE( check_negative_max_latitude_from_log )
 {
 	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTTestLog1.gpx", isFileName);
 	 BOOST_CHECK_EQUAL( route.maxLatitude(), -0.89982 );
+}
+
+//Check that a positive max latitude value is accepted in a route log
+BOOST_AUTO_TEST_CASE( check_positive_max_latitude_from_log )
+{
+	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTestLog2.gpx", isFileName);
+	 BOOST_CHECK_EQUAL( route.maxLatitude(), 2.79964 );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
