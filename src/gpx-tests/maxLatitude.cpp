@@ -5,15 +5,8 @@
 #include "route.h"
 #include "geometry.h"
 #include "earth.h"
-#include "position.h"
 
-#include <sstream>
-#include <fstream>
 #include <iostream>
-#include <cassert>
-#include <cmath>
-#include <algorithm>
-#include <iterator>
 #include <stdexcept>
 
 #include "geometry.h"
@@ -33,7 +26,7 @@ BOOST_AUTO_TEST_SUITE( maxLatitude )
  *
  * We start by testing a typical input: a route containing a single position with just a latitude value
  *
- * We next test for absent values.  There are two possibilites: the <rte pt> element may be
+ * We next test for absent values.  There are two possibilities: the <rte pt> element may be
  * missing, or the content of the element may be entirely blank space.
  *
  * Finally, we test that blank space before and after the name is dropped, including
