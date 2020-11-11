@@ -111,6 +111,8 @@ namespace GPS
       // Determine if any Position is visited more than once during the route.
       bool containsCycles() const;
 
+      std::string dummyFunction(std::string value);
+
     protected:
       Route() {} // Only called by Track constructor.
 

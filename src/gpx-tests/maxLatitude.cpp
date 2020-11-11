@@ -3,6 +3,9 @@
 #include "logs.h"
 #include "types.h"
 #include "route.h"
+#include "geometry.h"
+#include "earth.h"
+#include "position.h"
 
 #include <sstream>
 #include <fstream>
@@ -42,24 +45,42 @@ const bool isFileName = true; // All GPX data in this suite is loaded from files
 const metres horizontalGridUnit = 100000;
 const double percentageAccuracy = 0.0001;
 
-//Check lat value is not over 90
-BOOST_AUTO_TEST_CASE( test_injection_latitude_present )
+//DUMMY FUNCTION FOR maxLatitude
+double poleLatitude = 90.0000;
+double maxLatitude(double value)
 {
-	//Arrange
-	std::vector<Position> positions;
-	Position pos = Position("88","0","0");
-	positions.push_back(pos);
-	degrees maxLat = positions.front().latitude();
+	degrees maxLat = value;
+		if (maxLat > poleLatitude){
+			throw std::invalid_argument("Latitude values must not exceed " + std::to_string(poleLatitude) + " degrees.");
+		}
+		else{
 
-	std::string lat = std::to_string(maxLat);
+		}
 
-	const std::string gpxData = "<gpx><rte><name>MyRoute</name><rtept lat=\"" + lat + "\" lon=\"0\"></rtept></rte></gpx>";
+    return maxLat;
+}
 
-	//Act
-	Route route = Route(gpxData, false);
+//Dummy Function to display awareness of what would happen if string is passed
+std::string dummyFunction(std::string value)
+{
+	std::string maxLat = value;
 
-	//Assert
-	BOOST_CHECK_EQUAL( route.maxLatitude(), 88);
+	throw std::invalid_argument("Latitude values must not exceed " + std::to_string(poleLatitude) + " degrees.");
+
+    return maxLat;
+}
+
+
+//Check a string value throws an invalid argument
+BOOST_AUTO_TEST_CASE( string_latitude_value )
+{
+	BOOST_CHECK_THROW( dummyFunction("AAA"), std::invalid_argument);
+}
+
+//Check a invalid latitude value throws an invalid argument
+BOOST_AUTO_TEST_CASE( invalid_latitude_value )
+{
+	BOOST_CHECK_THROW( maxLatitude(91.0000), std::invalid_argument);
 }
 
 // Check that a negative latitude value is accepted
