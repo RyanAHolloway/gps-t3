@@ -1,26 +1,58 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
-<gpx version="1.1" creator="NTU" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
-    <rte>
-        <name>Test-Log-2</name>
-        <rtept lat="2.79964" lon="-1.79662">
-            <name>1</name>
-            <ele>-40000.000000</ele>
-        </rtept>
-        <rtept lat="1.79964" lon="-0.898312">
-            <name>2</name>
-            <ele>-40000.000000</ele>
-        </rtept>
-        <rtept lat="1.89982" lon="-0.898312">
-            <name>3</name>
-            <ele>-20000.000000</ele>
-        </rtept>
-        <rtept lat="1.79964" lon="0">
-            <name>4</name>
-            <ele>-40000.000000</ele>
-        </rtept>
-        <rtept lat="1.79964" lon="1.79662">
-            <name>5</name>
-            <ele>-40000.000000</ele>
-        </rtept>
-    </rte>
+<?xml version="1.0"?>
+<gpx>
+  <rte>
+    <name>Test Route</name>
+    <rtept lat="51.9286" lon="-1.4676">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="51.9456" lon="-1.3207">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="51.9362" lon="-1.2163">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="51.8863" lon="-1.1257">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="51.8379" lon="-1.1023">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="51.7878" lon="-1.0858">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="51.7079" lon="-1.0845">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="51.7215" lon="-1.2877">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="51.7428" lon="-1.4978">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="51.8447" lon="-1.4649">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="51.9134" lon="-1.5843">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="51.9912" lon="-1.6310">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="51.9312" lon="-1.4827">
+      <name />
+      <cmt />
+    </rtept>
+  </rte>
 </gpx>
