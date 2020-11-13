@@ -3,16 +3,7 @@
 #include "logs.h"
 #include "types.h"
 #include "route.h"
-#include "geometry.h"
-#include "earth.h"
-
-#include <iostream>
 #include <stdexcept>
-
-#include "geometry.h"
-#include "xml/element.h"
-#include "xml/parser.h"
-#include "route.h"
 
 using namespace GPS;
 
@@ -64,19 +55,19 @@ std::string dummyFunction(std::string value)
 
 
 //Check a string value throws an invalid argument
-BOOST_AUTO_TEST_CASE( string_latitude_value )
+BOOST_AUTO_TEST_CASE( stringLatitudeValue )
 {
 	BOOST_CHECK_THROW( dummyFunction("AAA"), std::invalid_argument);
 }
 
 //Check a invalid latitude value throws an invalid argument
-BOOST_AUTO_TEST_CASE( invalid_latitude_value )
+BOOST_AUTO_TEST_CASE( invalidLatitudeValue )
 {
 	BOOST_CHECK_THROW( maxLatitude(91.0000), std::invalid_argument);
 }
 
 // Check that a negative latitude value is accepted
-BOOST_AUTO_TEST_CASE( accept_negative_latitude_present )
+BOOST_AUTO_TEST_CASE( acceptNegativeLatitudePresent )
 {
 	//Arrange
 	const std::string gpxData = "<gpx><rte><name>MyRoute</name><rtept lat=\"-1.00000\" lon=\"0\"></rtept></rte></gpx>";
@@ -89,7 +80,7 @@ BOOST_AUTO_TEST_CASE( accept_negative_latitude_present )
 }
 
 // Check that a positive latitude value is accepted
-BOOST_AUTO_TEST_CASE( accept_positive_latitude_present )
+BOOST_AUTO_TEST_CASE( acceptPositiveLatitudePresent )
 {
 	const std::string gpxData = "<gpx><rte><name>MyRoute</name><rtept lat=\"1\" lon=\"0\"></rtept></rte></gpx>";
 	 Route route = Route(gpxData, false);
@@ -105,7 +96,7 @@ BOOST_AUTO_TEST_CASE( check_negative_max_latitude_from_log )
 }
 
 //Check that a positive max latitude value is accepted in a route log
-BOOST_AUTO_TEST_CASE( check_positive_max_latitude_from_log )
+BOOST_AUTO_TEST_CASE( positiveMaxLatitudeFromLog )
 {
 	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTestLog2.gpx", isFileName);
 	 BOOST_CHECK_EQUAL( route.maxLatitude(), 51.991295693805299);
@@ -120,7 +111,7 @@ BOOST_AUTO_TEST_CASE( granularityAccountedFor )
 }
 
 //Check that a max latitude value in a route log when the granularity is increased 10 times over.
-BOOST_AUTO_TEST_CASE( PositionsCloseMaxLatitudeFromLog )
+BOOST_AUTO_TEST_CASE( positionsCloseMaxLatitudeFromLog )
 {
 	 const metres granularity = horizontalGridUnit * 10; //Granularity is set to 10 times the size
 	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTestLog3.gpx", isFileName, granularity);

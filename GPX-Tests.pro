@@ -27,7 +27,7 @@ SOURCES += \
     src/xml/element.cpp \
     src/xml/parser.cpp \
     src/gpx-tests/name.cpp \
-    src/gpx-tests/numpositions.cpp
+    src/gpx-tests/numpositions.cpp \
     src/gpx-tests/maxLatitude.cpp
 
 INCLUDEPATH += headers/  headers/xml/
