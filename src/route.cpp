@@ -74,6 +74,14 @@ degrees Route::minLatitude() const
     return minLat;
 }
 
+
+/*! \fn degrees Route::maxLatitude() const
+     * \brief This function calculates the maximum latitude in a route by iterating over a vector of positions\n
+     *\n
+     * The latitude of the most Northerly point on the Route.
+     *\n
+     * \return 'maxLat' of the positions provided
+     */
 degrees Route::maxLatitude() const
 {
     assert(! positions.empty());

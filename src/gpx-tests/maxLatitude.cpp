@@ -30,6 +30,15 @@ const metres horizontalGridUnit = 100000;
 
 //DUMMY FUNCTION FOR maxLatitude
 double poleLatitude = 90.0000;
+
+/*! \fn double maxLatitude(double value)
+     * \brief This is a dummy function created to raise awareness of invalid numerical inputs for the maxLatitude test suite\n
+     *\n
+     * This function takes in a double data type and calculates if the value is over 90, if the value is greater than 90 is throws an invalid_argument to simulate what would happen if the Position object used by Route::maxLatitude() had a latitude greater than 90.
+     *\n
+     *\param double value \n
+     * \return 'maxLat' of the positions provided
+     */
 double maxLatitude(double value)
 {
 	degrees maxLat = value;
@@ -44,11 +53,20 @@ double maxLatitude(double value)
 }
 
 //Dummy Function to display awareness of what would happen if string is passed
+
+/*! \fn string dummyFunction(string value)
+     * \brief This is a dummy function created to raise awareness of invalid string inputs for the maxLatitude test suite\n
+     *\n
+     * This function takes in a string data type and throws an invalid_argument to simulate what would happen if the Position object used by Route::maxLatitude() was attemped to be given a string as a latitude.
+     *\n
+     *\param string value \n
+     * \return 'maxLat'
+     */
 std::string dummyFunction(std::string value)
 {
 	std::string maxLat = value;
 
-	throw std::invalid_argument("Latitude values must not exceed " + std::to_string(poleLatitude) + " degrees.");
+	throw std::invalid_argument("std::string is not a valid latitude data type");
 
     return maxLat;
 }
