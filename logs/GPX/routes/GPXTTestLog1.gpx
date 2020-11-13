@@ -1,26 +1,21 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
-<gpx version="1.1" creator="NTU" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+<?xml version="1.0"?>
+<gpx>
     <rte>
         <name>Test-Log</name>
-        <rtept lat="-1.79964" lon="-1.79662">
-            <name>A</name>
-            <ele>-40000.000000</ele>
+        <rtept lat="-1.79" lon="-1.79">
+            <name>1</name>
         </rtept>
-        <rtept lat="-1.79964" lon="-0.898312">
-            <name>B</name>
-            <ele>-40000.000000</ele>
+        <rtept lat="-1.79" lon="-0.89">
+            <name>2</name>
         </rtept>
-        <rtept lat="-0.89982" lon="-0.898312">
-            <name>Q</name>
-            <ele>-20000.000000</ele>
+        <rtept lat="-0.89" lon="-0.89">
+            <name>3</name>
         </rtept>
-        <rtept lat="-1.79964" lon="0">
-            <name>W</name>
-            <ele>-40000.000000</ele>
+        <rtept lat="-1.79" lon="0">
+            <name>4</name>
         </rtept>
-        <rtept lat="-1.79964" lon="1.79662">
-            <name>E</name>
-            <ele>-40000.000000</ele>
+        <rtept lat="-1.79" lon="1.79">
+            <name>5</name>
         </rtept>
     </rte>
 </gpx>

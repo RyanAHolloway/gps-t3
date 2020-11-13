@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<gpx>
+  <rte>
+    <name>Test Route 2</name>
+    <rtept lat="51.9286740989835" lon="-1.46766471303705">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="53.3905706637544" lon="-0.416798235351865">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="54.3218427549906" lon="2.83625045917344">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="55.6579433532461" lon="6.41779342792344">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="57.1292643464426" lon="10.0432817091734">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="55.1589769740437" lon="12.0867387404234">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="53.1126913589374" lon="14.0423051466734">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="51.3911864071489" lon="13.7786332716734">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="49.5168649083762" lon="9.53791061542344">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="48.4643996931917" lon="6.76935592792344">
+      <name />
+      <cmt />
+    </rtept>
+    <rtept lat="46.5395917106854" lon="2.85097271112745">
+      <name />
+      <cmt />
+    </rtept>
+  </rte>
+</gpx>

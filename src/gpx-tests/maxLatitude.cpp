@@ -36,7 +36,6 @@ BOOST_AUTO_TEST_SUITE( maxLatitude )
 
 const bool isFileName = true; // All GPX data in this suite is loaded from files.
 const metres horizontalGridUnit = 100000;
-const double percentageAccuracy = 0.0001;
 
 //DUMMY FUNCTION FOR maxLatitude
 double poleLatitude = 90.0000;
@@ -102,14 +101,41 @@ BOOST_AUTO_TEST_CASE( accept_positive_latitude_present )
 BOOST_AUTO_TEST_CASE( check_negative_max_latitude_from_log )
 {
 	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTTestLog1.gpx", isFileName);
-	 BOOST_CHECK_EQUAL( route.maxLatitude(), -0.89982 );
+	 BOOST_CHECK_EQUAL( route.maxLatitude(), -0.89 );
 }
 
 //Check that a positive max latitude value is accepted in a route log
 BOOST_AUTO_TEST_CASE( check_positive_max_latitude_from_log )
 {
 	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTestLog2.gpx", isFileName);
-	 BOOST_CHECK_EQUAL( route.maxLatitude(), 51.9912 );
+	 BOOST_CHECK_EQUAL( route.maxLatitude(), 51.991295693805299);
 }
+
+//Check the max latitude value in a route log where all route points when granularity is taken into consideration.
+BOOST_AUTO_TEST_CASE( granularityAccountedFor )
+{
+	 const metres granularity = horizontalGridUnit;
+	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTestLog3.gpx", isFileName, granularity);
+	 BOOST_CHECK_EQUAL( route.maxLatitude(), 57.129264346442604);
+}
+
+//Check that a max latitude value in a route log when the granularity is increased 10 times over.
+BOOST_AUTO_TEST_CASE( PositionsCloseMaxLatitudeFromLog )
+{
+	 const metres granularity = horizontalGridUnit * 10; //Granularity is set to 10 times the size
+	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTestLog3.gpx", isFileName, granularity);
+	 BOOST_CHECK_EQUAL( route.maxLatitude(), 53.112691358937397 );
+	 //Actual max is 57.129264346442604 but due to granularity change the max is 53.112691358937397 as the higher values are discarded due to the granularity
+}
+
+//Check that a max latitude value in a route log when the granularity is increased 10 times over.
+BOOST_AUTO_TEST_CASE( spacedPositionsMaxLatitudeFromLog )
+{
+	 const metres granularity = horizontalGridUnit / 10; //Granularity is set to 10 times the size
+	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTestLog3.gpx", isFileName, granularity);
+	 BOOST_CHECK_EQUAL( route.maxLatitude(), 57.129264346442604 );
+	 //Actual max is 57.129264346442604 but due to granularity change the max is 53.112691358937397 as the higher values are discarded due to the granularity
+}
+
 
 BOOST_AUTO_TEST_SUITE_END()
