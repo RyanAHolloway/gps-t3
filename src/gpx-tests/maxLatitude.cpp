@@ -16,14 +16,13 @@ BOOST_AUTO_TEST_SUITE( maxLatitude )
  *
  * The main testing consideration is whether a latitude value is present or absent in the GPX data.
  *
- * We start by testing a typical input: a route containing a single position with just a latitude value
+ * We start by simulating what would happen given a false/invalid input was provided.
  *
- * We next test for absent values.  There are two possibilities: the <rte pt> element may be
- * missing, or the content of the element may be entirely blank space.
+ * Then we test typical inputs, such as: a route containing a single position with a latitude value
  *
- * Finally, we test that blank space before and after the name is dropped, including
- * the corner case where there is blank space at both the front and the back of the
- * same name.  We also test that blank space within the name is not dropped.
+ * We next test that correct max latitude values are extracted from log files.
+ *
+ * Finally, we test the max latitude values when the route object is provided a granularity to be taken into consideration.
  */
 
 const bool isFileName = true; // All GPX data in this suite is loaded from files.
