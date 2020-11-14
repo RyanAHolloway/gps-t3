@@ -102,7 +102,7 @@ BOOST_AUTO_TEST_CASE( positiveMaxLatitudeFromLog )
 	 BOOST_CHECK_EQUAL( route.maxLatitude(), 51.991295693805299);
 }
 
-//Check the max latitude value in a route log where all route points when granularity is taken into consideration.
+//Check the max latitude value in a route log when granularity is taken into consideration.
 BOOST_AUTO_TEST_CASE( granularityAccountedFor )
 {
 	 const metres granularity = horizontalGridUnit;
@@ -110,7 +110,7 @@ BOOST_AUTO_TEST_CASE( granularityAccountedFor )
 	 BOOST_CHECK_EQUAL( route.maxLatitude(), 57.129264346442604);
 }
 
-//Check that a max latitude value in a route log when the granularity is increased 10 times over.
+//Check the max latitude value in a route log when the granularity is increased 10 times over.
 BOOST_AUTO_TEST_CASE( positionsCloseMaxLatitudeFromLog )
 {
 	 const metres granularity = horizontalGridUnit * 10; //Granularity is set to 10 times the size
@@ -119,7 +119,7 @@ BOOST_AUTO_TEST_CASE( positionsCloseMaxLatitudeFromLog )
 	 //Actual max is 57.129264346442604 but due to granularity change the max is 53.112691358937397 as the higher values are discarded due to the granularity
 }
 
-//Check that a max latitude value in a route log when the granularity is increased 10 times over.
+//Check the max latitude value in a route log when the granularity is 10 times less than normal.
 BOOST_AUTO_TEST_CASE( spacedPositionsMaxLatitudeFromLog )
 {
 	 const metres granularity = horizontalGridUnit / 10; //Granularity is set to 10 times the size
