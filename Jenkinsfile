@@ -13,7 +13,7 @@ pipeline {
            }
            stage('Run') {
            		steps {
-           			sh 'cd bin && ./gpx-tests --log_level=success'
+           			sh 'cd bin && ./gpx-tests --log_level=success --run_test=maxLatitude'
            		}
            } 
      }
