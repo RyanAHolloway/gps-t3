@@ -30,6 +30,13 @@ const metres horizontalGridUnit = 100000;
 
 //DUMMY FUNCTION FOR maxLatitude
 double poleLatitude = 90.0000;
+
+/*! \fn std::string dummyMaxLatitude(double value) const
+     * \brief This function simulates what happens when an invalid double is attempted to be parsed into the route system\n
+     *\n
+     * \param value
+     * \return 'maxLat'
+     */
 double dummyMaxLatitude(double value)
 {
 	degrees maxLat = value;
@@ -44,6 +51,12 @@ double dummyMaxLatitude(double value)
 }
 
 //Dummy Function to display awareness of what would happen if string is passed
+/*! \fn std::string dummyFunction(std::string value) const
+     * \brief This function simulates what happens when a string is attempted to be parsed into the route system\n
+     *\n
+     * \param value
+     * \return 'maxLat'
+     */
 std::string dummyFunction(std::string value)
 {
 	std::string maxLat = value;
@@ -54,19 +67,22 @@ std::string dummyFunction(std::string value)
 }
 
 
-//Check a string value throws an invalid argument
+/** Check a string value throws an invalid argument
+ */
 BOOST_AUTO_TEST_CASE( stringLatitudeValue )
 {
 	BOOST_CHECK_THROW( dummyFunction("AAA"), std::invalid_argument);
 }
 
-//Check a invalid latitude value throws an invalid argument
+/** Check a invalid latitude value throws an invalid argument
+ */
 BOOST_AUTO_TEST_CASE( invalidLatitudeValue )
 {
 	BOOST_CHECK_THROW( dummyMaxLatitude(91.0000), std::invalid_argument);
 }
 
-// Check that a negative latitude value is accepted
+/** Check that a negative latitude value is accepted
+ */
 BOOST_AUTO_TEST_CASE( acceptNegativeLatitudePresent )
 {
 	//Arrange
@@ -79,7 +95,8 @@ BOOST_AUTO_TEST_CASE( acceptNegativeLatitudePresent )
 	BOOST_CHECK_EQUAL( route.maxLatitude(), -1.00000);
 }
 
-// Check that a positive latitude value is accepted
+/** Check that a positive latitude value is accepted
+ */
 BOOST_AUTO_TEST_CASE( acceptPositiveLatitudePresent )
 {
 	const std::string gpxData = "<gpx><rte><name>MyRoute</name><rtept lat=\"1\" lon=\"0\"></rtept></rte></gpx>";
@@ -88,21 +105,24 @@ BOOST_AUTO_TEST_CASE( acceptPositiveLatitudePresent )
 	 BOOST_CHECK_EQUAL( route.maxLatitude() , 1 );
 }
 
-//Check that a negative max latitude value is accepted in a route log
-BOOST_AUTO_TEST_CASE( check_negative_max_latitude_from_log )
+/** Check that a negative max latitude value is accepted in a route log
+ */
+BOOST_AUTO_TEST_CASE( negative_max_latitude_from_log )
 {
 	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTTestLog1.gpx", isFileName);
 	 BOOST_CHECK_EQUAL( route.maxLatitude(), -0.89 );
 }
 
-//Check that a positive max latitude value is accepted in a route log
+/** Check that a positive max latitude value is accepted in a route log
+ */
 BOOST_AUTO_TEST_CASE( positiveMaxLatitudeFromLog )
 {
 	 Route route = Route(LogFiles::GPXRoutesDir + "GPXTestLog2.gpx", isFileName);
 	 BOOST_CHECK_EQUAL( route.maxLatitude(), 51.991295693805299);
 }
 
-//Check the max latitude value in a route log when granularity is taken into consideration.
+/** Check the max latitude value in a route log when granularity is taken into consideration.
+ */
 BOOST_AUTO_TEST_CASE( granularityAccountedFor )
 {
 	 const metres granularity = horizontalGridUnit;
@@ -110,7 +130,8 @@ BOOST_AUTO_TEST_CASE( granularityAccountedFor )
 	 BOOST_CHECK_EQUAL( route.maxLatitude(), 57.129264346442604);
 }
 
-//Check the max latitude value in a route log when the granularity is increased 10 times over.
+/** Check the max latitude value in a route log when the granularity is increased 10 times over.
+ */
 BOOST_AUTO_TEST_CASE( positionsCloseMaxLatitudeFromLog )
 {
 	 const metres granularity = horizontalGridUnit * 10; //Granularity is set to 10 times the size
@@ -119,7 +140,8 @@ BOOST_AUTO_TEST_CASE( positionsCloseMaxLatitudeFromLog )
 	 //Actual max is 57.129264346442604 but due to granularity change the max is 53.112691358937397 as the higher values are discarded due to the granularity
 }
 
-//Check the max latitude value in a route log when the granularity is 10 times less than normal.
+/** Check the max latitude value in a route log when the granularity is 10 times less than normal.
+ */
 BOOST_AUTO_TEST_CASE( spacedPositionsMaxLatitudeFromLog )
 {
 	 const metres granularity = horizontalGridUnit / 10; //Granularity is set to 10 times the size
